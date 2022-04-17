@@ -10,8 +10,8 @@ MineSweeper::MineSweeper(QWidget *parent)
     rows = 9;
     columns = 9;
     mines = 10;
+    timerID = startTimer(1000);
     resizeAll();
-    setWindowIcon(QIcon(":/img/mine2.ico"));
 }
 
 void MineSweeper::paintEvent(QPaintEvent *e){
@@ -53,7 +53,6 @@ void MineSweeper::mousePressEvent(QMouseEvent *e){
 void MineSweeper::mouseReleaseEvent(QMouseEvent *e){
     ui->pushButton->setStyleSheet("QPushButton {"
                                   "image:url(:/img/face_happy.png);}");
-    timerID = startTimer(1000);
     if(!win && !lose){
         fl.release(e->pos(),e->button());
     }

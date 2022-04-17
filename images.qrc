@@ -14,7 +14,6 @@
         <file>img/number_8.png</file>
         <file>img/tile_hidden.png</file>
         <file>img/tile_revealed.png</file>
-        <file>img/mine2.ico</file>
         <file>img/face_win.png</file>
         <file>img/face_O.png</file>
     </qresource>

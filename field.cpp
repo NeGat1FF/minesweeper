@@ -220,24 +220,26 @@ void field::press(QPoint point,Qt::MouseButton bt){
 }
 
 void field::reveal(int x, int y){
-    fl[x][y]->isRevealed = true;
-    if(fl[x][y]->value == 0){
-        int row = x;
-        int col = y;
-        for (int i = row - 1; i <= row + 1; i++) {
-            for (int j = col - 1; j <= col + 1; j++) {
-                if(i >= 0 && i < rows && j >= 0 && j < columns) {
-                    if(fl[i][j]->value != 9 && !fl[i][j]->isFlag && rows != x && !fl[i][j]->isRevealed) {
-                        fl[i][j]->isRevealed = true;
-                        if(fl[i][j]->value == 0){
-                            reveal(i,j);
+    if(!fl[x][y]->isFlag){
+        fl[x][y]->isRevealed = true;
+        if(fl[x][y]->value == 0){
+            int row = x;
+            int col = y;
+            for (int i = row - 1; i <= row + 1; i++) {
+                for (int j = col - 1; j <= col + 1; j++) {
+                    if(i >= 0 && i < rows && j >= 0 && j < columns) {
+                        if(fl[i][j]->value != 9 && !fl[i][j]->isFlag && rows != x && !fl[i][j]->isRevealed) {
+                            fl[i][j]->isRevealed = true;
+                            if(fl[i][j]->value == 0){
+                                reveal(i,j);
+                            }
                         }
                     }
                 }
             }
         }
+        checkWin();
     }
-    checkWin();
 }
 
 
