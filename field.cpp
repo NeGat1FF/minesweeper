@@ -25,6 +25,45 @@ field::field(int rows, int columns, int mines)
         x=10;
         y+=32;
     }
+    dark[0] = QLine(10,31,columns*32+11,31);
+    dark[1] = QLine(10,32,columns*32+10,32);
+    dark[2] = QLine(8,31,8,rows*32+110);
+    dark[3] = QLine(9,31,9,rows*32+109);
+    dark[4] = QLine(10,31,10,rows*32+108);
+    dark[5] = QLine(19+columns*32,25,19+columns*32,rows*32+118);
+    dark[6] = QLine(0,rows*32+118,columns*32+20,rows*32+118);
+    dark[7] = QLine(19+columns*32,25,19+columns*32,rows*32+118);
+    dark[8] = QLine(10,107,columns*32+10,107);
+    dark[9] = QLine(10,106,columns*32+11,106);
+    dark[10] = QLine(10,105,columns*32+12,105);
+    dark[11] = QLine(15,43,15,88);
+    dark[12] = QLine(16,43,16,87);
+    dark[13] = QLine(15,41,73,41);
+    dark[14] = QLine(15,42,72,42);
+    dark[15] = QLine(columns*32-50,41,6+columns*32,41);
+    dark[16] = QLine(columns*32-50,42,5+columns*32,42);
+    dark[17] = QLine(columns*32-50,43,columns*32-50,88);
+    dark[18] = QLine(columns*32-49,43,columns*32-49,87);
+
+    light[0] = QLine(5,27,5,rows*32+114);
+    light[1] = QLine(10,rows*32+114,columns*32+10,rows*32+114);
+    light[2] = QLine(columns*32+15,27,columns*32+15,rows*32+114);
+    light[3] = QLine(6,27,columns*32+15,27);
+    light[4] = QLine(5,102,columns*32+10,102);
+
+    white[0] = QLine(9,99,columns*32+11,99);
+    white[1] = QLine(10,98,columns*32+11,98);
+    white[2] = QLine(17,87,72,87);
+    white[3] = QLine(16,88,72,88);
+    white[4] = QLine(72,43,72,87);
+    white[5] = QLine(73,42,73,88);
+    white[6] = QLine(6+columns*32,43,6+columns*32,88);
+    white[7] = QLine(5+columns*32,44,5+columns*32,88);
+    white[8] = QLine(columns*32-49,87,6+columns*32,87);
+    white[9] = QLine(columns*32-50,88,6+columns*32,88);
+    white[10] = QLine(columns*32+10,99,columns*32+10,32);
+    white[11] = QLine(columns*32+11,99,columns*32+11,31);
+
 }
 
 
@@ -91,44 +130,17 @@ void field::showField(){
 }
 
 void field::draw(QPainter *p){
-    p->setBrush(QBrush(QColor(192,192,192)));
-    p->drawRect(0,25,columns*32+20,84);
-    p->drawImage(0,25,QImage(":/img/left_top_2.png"));
-    p->drawImage(10+32*columns,25,QImage(":/img/right_top_2.png"));
-    //    p->drawImage(0,25,QImage(":/img/left_top.png"));
-    //    p->drawImage(10+32*columns,25,QImage(":/img/right_top.png"));
-    //    p->drawImage(0,74+25,QImage(":/img/left_mid.png"));
-    //    p->drawImage(10+32*columns,74+25,QImage(":/img/right_mid.png"));
-    p->drawImage(0,84+32*rows+25,QImage(":/img/left_bottom.png"));
-    p->drawImage(10+32*columns,84+32*rows+25,QImage(":/img/right_bottom.png"));
-    int x = 10;
-    int y = 25;
-    for(int i = 0;i < columns*3;i++){
-        p->drawImage(x,y,QImage(":/img/bottom.png"));
-        x+=32;
-        if(i == columns-1){
-            x=10;
-            y+=74;
-        }
-        if(i == columns*2-1){
-            x=10;
-            y+=rows*32+10;
-        }
-    }
-    x=0;
-    y=84+25;
-    for(int i = 0;i < rows*2;i++){
-        p->drawImage(x,y,QImage(":/img/left.png"));
-        y+=32;
-        if(i == rows-1){
-            y=84+25;
-            x=10+columns*32;
-        }
-    }
-    p->drawImage(0,10+25,QImage(":/img/left.png"));
-    p->drawImage(0,42+25,QImage(":/img/left.png"));
-    p->drawImage(10+columns*32,10+25,QImage(":/img/left.png"));
-    p->drawImage(10+columns*32,42+25,QImage(":/img/left.png"));
+    p->setBrush(QColor(192,192,192));
+    p->drawRect(10,25,8+32*columns,75);
+    p->setPen(QPen(QColor(123,123,123),1)); // dark
+    p->drawLines(dark,19);
+
+    p->setPen(QPen(QColor(192,192,192),6)); //light
+    p->drawLines(light,5);
+
+    p->setPen(QPen(QColor(255,255,255),1)); //white
+    p->drawLines(white,12);
+
     for(int i = 0;i < rows;i++){
         for(int j = 0;j < columns;j++){
             fl[i][j]->draw(p);
@@ -183,10 +195,12 @@ void field::press(QPoint point,Qt::MouseButton bt){
                     if(fl[i][j]->isFlag){
                         if(fl[i][j]->value == 9)minesCnt++;
                         fl[i][j]->isFlag = false;
+                        displayMines++;
                     }
                     else{
                         if(fl[i][j]->value == 9)minesCnt--;
                         fl[i][j]->isFlag = true;
+                        displayMines--;
                     }
 
                 }

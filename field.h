@@ -27,6 +27,9 @@ public:
 private:
     bool firstClick;
     bool pressed;
+    QLine dark[19];
+    QLine light[5];
+    QLine white[12];
     QElapsedTimer timer;
     title*** fl;
     int rows;

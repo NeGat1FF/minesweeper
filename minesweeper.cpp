@@ -44,20 +44,26 @@ void MineSweeper::timerEvent(QTimerEvent *t){
 void MineSweeper::mousePressEvent(QMouseEvent *e){
     ui->pushButton->setStyleSheet("QPushButton {"
                                   "image:url(:/img/face_O.png);}");
-    fl.press(e->pos(),e->button());
+    if(!win && !lose){
+        fl.press(e->pos(),e->button());
+    }
     repaint();
 }
 
 void MineSweeper::mouseReleaseEvent(QMouseEvent *e){
-    fl.release(e->pos(),e->button());
     ui->pushButton->setStyleSheet("QPushButton {"
                                   "image:url(:/img/face_happy.png);}");
     timerID = startTimer(1000);
+    if(!win && !lose){
+        fl.release(e->pos(),e->button());
+    }
     repaint();
 }
 
 void MineSweeper::mouseMoveEvent(QMouseEvent *e){
-    fl.moving(e->pos());
+    if(!win && !lose){
+        fl.moving(e->pos());
+    }
     repaint();
 }
 
