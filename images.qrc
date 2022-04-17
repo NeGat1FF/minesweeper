@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/digits.png</file>
+        <file>img/face_happy.png</file>
+        <file>img/face_lose.png</file>
+        <file>img/flag.png</file>
+        <file>img/mine.png</file>
+        <file>img/number_1.png</file>
+        <file>img/number_2.png</file>
+        <file>img/number_3.png</file>
+        <file>img/number_4.png</file>
+        <file>img/number_5.png</file>
+        <file>img/number_6.png</file>
+        <file>img/number_7.png</file>
+        <file>img/number_8.png</file>
+        <file>img/tile_hidden.png</file>
+        <file>img/tile_revealed.png</file>
+        <file>img/mine2.ico</file>
+        <file>img/bottom.png</file>
+        <file>img/left.png</file>
+        <file>img/left_bottom.png</file>
+        <file>img/left_mid.png</file>
+        <file>img/left_top.png</file>
+        <file>img/right_bottom.png</file>
+        <file>img/right_mid.png</file>
+        <file>img/right_top.png</file>
+        <file>img/face_win.png</file>
+        <file>img/face_O.png</file>
+        <file>img/left_top_2.png</file>
+        <file>img/right_top_2.png</file>
+    </qresource>
+</RCC>
