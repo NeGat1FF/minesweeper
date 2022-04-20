@@ -190,8 +190,7 @@ void field::press(QPoint point,Qt::MouseButton bt){
     if(!firstClick && bt == Qt::RightButton){
         for(int i = 0;i < rows;i++){
             for(int j = 0;j < columns;j++){
-                if(fl[i][j]->rect.contains(point)){
-
+                if(fl[i][j]->rect.contains(point) && !fl[i][j]->isRevealed){
                     if(fl[i][j]->isFlag){
                         if(fl[i][j]->value == 9)minesCnt++;
                         fl[i][j]->isFlag = false;

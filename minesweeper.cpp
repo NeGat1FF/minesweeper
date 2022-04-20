@@ -42,8 +42,10 @@ void MineSweeper::timerEvent(QTimerEvent *t){
 }
 
 void MineSweeper::mousePressEvent(QMouseEvent *e){
-    ui->pushButton->setStyleSheet("QPushButton {"
-                                  "image:url(:/img/face_O.png);}");
+    if(e->button() == Qt::LeftButton){
+        ui->pushButton->setStyleSheet("QPushButton {"
+                                      "image:url(:/img/face_O.png);}");
+    }
     if(!win && !lose){
         fl.press(e->pos(),e->button());
     }
