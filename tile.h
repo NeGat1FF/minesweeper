@@ -1,15 +1,15 @@
-#ifndef TITLE_H
-#define TITLE_H
+#ifndef TILE_H
+#define TILE_H
 
 #include <QImage>
 #include <QRect>
 #include <QPainter>
 
 
-class title
+class Tile
 {
 public:
-    title(int x,int y);
+    Tile(int x,int y);
     QRect rect;
     int value;
     void draw(QPainter *);
@@ -20,4 +20,4 @@ public:
 
 };
 
-#endif // TITLE_H
+#endif // TILE_H

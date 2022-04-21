@@ -20,10 +20,8 @@ set(PROJECT_SOURCES
         minesweeper.h
         minesweeper.ui
         images.qrc
-        title.h
-        title.cpp
-        field.h
-        field.cpp
+        tile.h
+        tile.cpp
         dialog.h
         dialog.cpp
         dialog.ui

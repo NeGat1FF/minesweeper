@@ -59,22 +59,6 @@ color: rgb(255, 0, 0);</string>
      <enum>QLCDNumber::Flat</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>20</y>
-      <width>48</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/img/face_happy.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -217,22 +201,6 @@ color: rgb(255, 0, 0);</string>
     <hint type="sourcelabel">
      <x>-1</x>
      <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MineSweeper</receiver>
-   <slot>newGame()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>241</x>
-     <y>189</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
