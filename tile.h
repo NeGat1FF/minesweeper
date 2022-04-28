@@ -17,7 +17,6 @@ public:
     bool isFlag;
     bool isOver;
     static const QImage nums[12];
-
 };
 
 #endif // TILE_H
