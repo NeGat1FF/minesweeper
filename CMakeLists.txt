@@ -11,21 +11,20 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+set(CMAKE_PREFIX_PATH "C:/Qt/6.6.0/msvc2019_64/")
+
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-set(PROJECT_SOURCES
-        main.cpp
-        minesweeper.cpp
-        minesweeper.h
-        minesweeper.ui
-        images.qrc
-        tile.h
-        tile.cpp
-        dialog.h
-        dialog.cpp
-        dialog.ui
-        icon.rc
+# Set include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# set project sources using file(GLOB_RECURSE) to get all files in subdirectories
+file(GLOB_RECURSE PROJECT_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -54,10 +53,6 @@ endif()
 target_link_libraries(Minesweeper PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(Minesweeper PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
 

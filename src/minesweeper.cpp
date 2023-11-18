@@ -1,5 +1,5 @@
 #include "minesweeper.h"
-#include "./ui_minesweeper.h"
+#include "../ui_minesweeper.h"
 
 MineSweeper::MineSweeper(QWidget *parent)
     : QMainWindow(parent)
