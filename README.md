@@ -1,6 +1,6 @@
 # Minesweeper
 
-A classic Minesweeper game implemented in C++ using Qt, emulating the look and feel of the Windows 7 version. This project is built using CMake.
+A classic Minesweeper game implemented in C++ using Qt, emulating the look and feel of the Windows XP version. This project is built using CMake.
 
 ## Installation
 
